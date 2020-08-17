@@ -1,0 +1,8 @@
+export const todoActionTypes = {
+    DELETE_TODO: 'DELETE_TODO',
+    CHANGE_TITLE: 'CHANGE_TITLE',
+    ADD_TODO: 'ADD_TODO',
+    CHANGE_MODE: 'CHANGE_MODE',
+    UPDATE_TITLE: 'UPDATE_TITLE',
+    UPDATE_TODO: 'UPDATE_TODO'
+}

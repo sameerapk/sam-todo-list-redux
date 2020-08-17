@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import TodoItem from './components/TodoItem/todo-item.component'
+import AddTodo from './components/AddTodo/add-todo.component'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    const { todos } = this.props
+    return (
+      <div>
+        <AddTodo />
+        {
+          todos.length ? todos.map((todo, i) => (
+            <TodoItem key={i} todo={todo} mode={todo.mode} />
+          )) :
+            <p>No more todos</p>
+        }
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = ({ todos: { todos } }) => ({
+  todos
+})
+
+export default connect(mapStateToProps)(App)
+
